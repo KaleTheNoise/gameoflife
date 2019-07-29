@@ -1,0 +1,11 @@
+C:\Users\zwisner\Documents\C Projects\gameoflife\bin\Debug\netcoreapp2.2\gameoflife.deps.json
+C:\Users\zwisner\Documents\C Projects\gameoflife\bin\Debug\netcoreapp2.2\gameoflife.runtimeconfig.json
+C:\Users\zwisner\Documents\C Projects\gameoflife\bin\Debug\netcoreapp2.2\gameoflife.runtimeconfig.dev.json
+C:\Users\zwisner\Documents\C Projects\gameoflife\bin\Debug\netcoreapp2.2\gameoflife.dll
+C:\Users\zwisner\Documents\C Projects\gameoflife\bin\Debug\netcoreapp2.2\gameoflife.pdb
+C:\Users\zwisner\Documents\C Projects\gameoflife\obj\Debug\netcoreapp2.2\gameoflife.csprojAssemblyReference.cache
+C:\Users\zwisner\Documents\C Projects\gameoflife\obj\Debug\netcoreapp2.2\gameoflife.csproj.CoreCompileInputs.cache
+C:\Users\zwisner\Documents\C Projects\gameoflife\obj\Debug\netcoreapp2.2\gameoflife.AssemblyInfoInputs.cache
+C:\Users\zwisner\Documents\C Projects\gameoflife\obj\Debug\netcoreapp2.2\gameoflife.AssemblyInfo.cs
+C:\Users\zwisner\Documents\C Projects\gameoflife\obj\Debug\netcoreapp2.2\gameoflife.dll
+C:\Users\zwisner\Documents\C Projects\gameoflife\obj\Debug\netcoreapp2.2\gameoflife.pdb
