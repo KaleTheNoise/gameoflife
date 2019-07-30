@@ -30,7 +30,7 @@ namespace gameoflife
             }
             return theBoard;
         }
-
+        //render the board so it looks nice
         public static void renderBoard(int[,] board)
         {
             for (int tL=0; tL<=board.GetLength(1)+1;tL++)
@@ -48,6 +48,18 @@ namespace gameoflife
                 }
                 Console.WriteLine("|");
             }
+            for (int tL=0; tL<=board.GetLength(1)+1;tL++)
+                Console.Write("_");
+                Console.WriteLine();
+        }
+        //determine the new boardstate based on the rules
+        // Live Cell with 0-1 neighbors dies because of underpopulation
+        // Live Cell with 2-3 neighbors stays alive because its just right
+        // Live Cell with >3 neighbors dies because of overpopulation
+        // Dead Cell with EXACTLY 3 neighbors is alive by reproduction
+        public static void nextBoardState(int[,] currentBoard)
+        {
+
         }
         //generate a completely dead board
           public static int[,] deadState(int width, int height)
