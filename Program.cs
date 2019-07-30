@@ -59,7 +59,13 @@ namespace gameoflife
         // Dead Cell with EXACTLY 3 neighbors is alive by reproduction
         public static void nextBoardState(int[,] currentBoard)
         {
-
+            int [,] nextBoard = deadState(currentBoard.GetLength(0),currentBoard.GetLength(1));
+            for (int i=0; i<currentBoard.GetLength(0);i++)
+            {
+                for (int j=0; j<currentBoard.GetLength(1); j++)
+                {
+                }
+            }
         }
         //generate a completely dead board
           public static int[,] deadState(int width, int height)
