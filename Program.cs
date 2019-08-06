@@ -9,7 +9,9 @@ namespace gameoflife
         static void Main(string[] args)
         {
             int[,] board = randomState(5,10);
-            renderBoard(board);                        
+            renderBoard(board);
+            board = nextBoardState(board);
+            renderBoard(board);              
         }
       
         //generate a randomized starting board
@@ -57,15 +59,49 @@ namespace gameoflife
         // Live Cell with 2-3 neighbors stays alive because its just right
         // Live Cell with >3 neighbors dies because of overpopulation
         // Dead Cell with EXACTLY 3 neighbors is alive by reproduction
-        public static void nextBoardState(int[,] currentBoard)
+
+        //FIX CHECKING IF THE INDEX OF currentBoard[i+yc,j+xc] IS OUT OF RANGE
+        public static int[,] nextBoardState(int[,] currentBoard)
         {
             int [,] nextBoard = deadState(currentBoard.GetLength(0),currentBoard.GetLength(1));
             for (int i=0; i<currentBoard.GetLength(0);i++)
             {
                 for (int j=0; j<currentBoard.GetLength(1); j++)
                 {
+                    int neighbors = 0;
+                    if (currentBoard[i,j]==LIVE)
+                    {
+                        for (int xc = -1; xc <= 1; xc++)
+                        {
+                            for (int yc = -1; yc <=1; yc++)
+                            {
+                                if (currentBoard[i+yc,j+xc] != null && currentBoard[i+yc,j+xc] == LIVE)
+                                    neighbors++;
+                            }
+                        }
+                        if(neighbors == 0 || neighbors == 1)
+                            nextBoard[i,j]=DEAD;
+                        else if (neighbors == 2 || neighbors == 3)
+                            nextBoard[i,j]=LIVE;
+                        else if (neighbors > 3)
+                            nextBoard[i,j]=DEAD;
+                    }
+                    else if (currentBoard[i,j]==DEAD)
+                    {
+                         for (int xc = -1; xc <= 1; xc++)
+                        {
+                            for (int yc = -1; yc <=1; yc++)
+                            {
+                                if (currentBoard[i+yc,j+xc] != null && currentBoard[i+yc,j+xc] == LIVE)
+                                    neighbors++;
+                            }
+                        }
+                        if (neighbors == 3)
+                            nextBoard[i,j] = LIVE;
+                    }
                 }
             }
+            return nextBoard;
         }
         //generate a completely dead board
           public static int[,] deadState(int width, int height)
