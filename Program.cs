@@ -8,10 +8,13 @@ namespace gameoflife
         public static int LIVE = 1;
         static void Main(string[] args)
         {
-            int[,] board = randomState(5,10);
+            int[,] board = randomState(20,40);
             renderBoard(board);
-            board = nextBoardState(board);
-            renderBoard(board);              
+            for(int rTen=0; rTen <= 10; rTen++)
+            {
+                board = nextBoardState(board);
+                renderBoard(board);
+            } 
         }
       
         //generate a randomized starting board
@@ -59,8 +62,6 @@ namespace gameoflife
         // Live Cell with 2-3 neighbors stays alive because its just right
         // Live Cell with >3 neighbors dies because of overpopulation
         // Dead Cell with EXACTLY 3 neighbors is alive by reproduction
-
-        //FIX CHECKING IF THE INDEX OF currentBoard[i+yc,j+xc] IS OUT OF RANGE
         public static int[,] nextBoardState(int[,] currentBoard)
         {
             int [,] nextBoard = deadState(currentBoard.GetLength(0),currentBoard.GetLength(1));
@@ -75,7 +76,11 @@ namespace gameoflife
                         {
                             for (int yc = -1; yc <=1; yc++)
                             {
-                                if (currentBoard[i+yc,j+xc] != null && currentBoard[i+yc,j+xc] == LIVE)
+                                bool validCol = (i+yc >=0 && i+yc < currentBoard.GetLength(0));
+                                bool validRow = (j+xc >=0 && j+xc < currentBoard.GetLength(1));
+                                bool notCurrent = (yc != 0 && xc !=0);
+                                bool validNeighbor = (validCol && validRow && notCurrent);
+                                if (validNeighbor && currentBoard[i+yc,j+xc] == LIVE)
                                     neighbors++;
                             }
                         }
@@ -92,7 +97,11 @@ namespace gameoflife
                         {
                             for (int yc = -1; yc <=1; yc++)
                             {
-                                if (currentBoard[i+yc,j+xc] != null && currentBoard[i+yc,j+xc] == LIVE)
+                                bool validCol = (i+yc >=0 && i+yc < currentBoard.GetLength(0));
+                                bool validRow = (j+xc >=0 && j+xc < currentBoard.GetLength(1));
+                                bool notCurrent = (yc != 0 && xc !=0);
+                                bool validNeighbor = (validCol && validRow && notCurrent);
+                                if ( validNeighbor && currentBoard[i+yc,j+xc] == LIVE)
                                     neighbors++;
                             }
                         }
