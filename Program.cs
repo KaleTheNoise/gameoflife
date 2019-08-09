@@ -1,20 +1,24 @@
 ﻿using System;
+using System.Threading;
 
 namespace gameoflife
-{
+{   
     class Program
     {
         public static int DEAD = 0;
         public static int LIVE = 1;
         static void Main(string[] args)
         {
-            int[,] board = randomState(20,40);
+            bool keepGoing = true;
+            int[,] board = randomState(25,50);
             renderBoard(board);
-            for(int rTen=0; rTen <= 10; rTen++)
+            while(keepGoing)
             {
-                board = nextBoardState(board);
+                int[,] nextBoard = nextBoardState(board);
+                board = nextBoard;
                 renderBoard(board);
-            } 
+                Thread.Sleep(1000);
+            }
         }
       
         //generate a randomized starting board
