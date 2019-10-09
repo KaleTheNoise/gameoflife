@@ -5,12 +5,14 @@ namespace gameoflife
 {   
     class Program
     {
+        // declare static variables for DEAD and LIVE because it looks cooler
         public static int DEAD = 0;
         public static int LIVE = 1;
         static void Main(string[] args)
         {
+            //set initial boardstate and bool then continue rendering board until new boards are identical
             bool keepGoing = true;
-            int[,] board = randomState(25,50);
+            int[,] board = randomState(5,10);
             renderBoard(board);
             while(keepGoing)
             {
@@ -24,8 +26,10 @@ namespace gameoflife
         //generate a randomized starting board
         public static int[,] randomState(int width, int height)
         {
+            //create array for board
             int[,] theBoard = new int[width, height];
             Random rand = new Random();
+            //fill the Board with 1 and 0 in a random first state.
             for(int i=0; i< width; i++)
             {
                 for (int j=0; j<height; j++)
@@ -42,12 +46,14 @@ namespace gameoflife
         //render the board so it looks nice
         public static void renderBoard(int[,] board)
         {
+            //create board border
             for (int tL=0; tL<=board.GetLength(1)+1;tL++)
                 Console.Write("_");
-                Console.WriteLine();
+            Console.WriteLine();
             for (int i=0;i<board.GetLength(0); i++)
             {
                 Console.Write("|");
+                //convert 1 and 0 into * and blank spaces
                 for (int j=0; j<board.GetLength(1); j++)
                 {
                     if (board[i,j] == LIVE)
@@ -68,6 +74,7 @@ namespace gameoflife
         // Dead Cell with EXACTLY 3 neighbors is alive by reproduction
         public static int[,] nextBoardState(int[,] currentBoard)
         {
+            //generate the next board state following rules above
             int [,] nextBoard = deadState(currentBoard.GetLength(0),currentBoard.GetLength(1));
             for (int i=0; i<currentBoard.GetLength(0);i++)
             {
