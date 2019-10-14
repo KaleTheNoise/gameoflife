@@ -14,6 +14,7 @@ namespace gameoflife
             bool keepGoing = true;
             int[,] board = randomState(5,10);
             renderBoard(board);
+			//continue to run until the board becomes stale
             while(keepGoing)
             {
                 int[,] nextBoard = nextBoardState(board);
